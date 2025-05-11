@@ -41,6 +41,7 @@ func (s *Server) Subscribe(req *pb.SubscribeRequest, stream pb.PubSub_SubscribeS
 		s.mu.RUnlock()
 		return status.Error(codes.Unavailable, "server is closed")
 	}
+
 	s.mu.RUnlock()
 
 	s.logger.WithField("key", req.Key).Info("New subscription")
